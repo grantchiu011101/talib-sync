@@ -1,0 +1,30 @@
+{
+  "name": "talib-sync",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Grant Fong <grantchiu011101@gmail.com>",
+  "keywords": [
+    "talib",
+    "sync",
+    "technical analysis",
+    "financial markets"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "deasync": "^0.1.9",
+    "talib": "^1.0.2"
+  },
+  "devDependencies": {
+    "bluebird": "^3.4.6",
+    "gulp": "^3.9.1",
+    "gulp-mocha": "^3.0.1",
+    "mocha": "^3.1.2",
+    "request": "^2.78.0",
+    "should": "^11.1.1",
+    "underscore": "^1.8.3"
+  }
+}
