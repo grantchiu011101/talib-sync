@@ -1,6 +1,6 @@
 var talib = require("talib");
 var _ = require( "underscore") ;
-var deasync = require("deasync") ;
+var sync = require('synchronize')
 
 module.exports = {
 	
@@ -8,33 +8,30 @@ module.exports = {
 
 	version: talib.version,
 
-	_callback: function(params, cb) {
-		talib.execute(params, function (data) {
-			if ( _.has(data, "error")) {
-				cb(data["error"], null) ;
-			} else {
-				cb(null, data) ;
-			}
-		});
-	},
+	
 	execute: function (params) {
 
-		var _callback = function ( params, cb) {
-			talib.execute( params, function(data) {
-				if ( _.has ( data, "error")) {
-					cb ( data["error"], []) ;
-				} else {
-					cb ( null, data) ;
-				}
-			})
-		} ;
+		sync.fiber( function () {
 
-		return deasync(_callback)(params) ;
+			function _callback ( params, callback) {
+				talib.execute(params, function (result) {
+					
+					if ( _.has( result, 'error')) {
+						callback ( result['error'], null)
+					} else {
+						callback ( null, result) ;
+					}
+				});
+			}
+
+			var data = sync.await(_callback(params, sync.defer())) ;
+			console.log ( "get data from sync.fiber") ;
+			return data ;
+		}) ;
+
 	},
 	explain: function(func) {
-		return new Promise ( function( resolve, reject) {
-			var explain = talib.explain( func) ;
-			resolve ( explain) ;
-		}) ;
+		var explain = talib.explain( func) ;
+		return explain ;
 	}
 } ;
