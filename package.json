@@ -1,6 +1,6 @@
 {
   "name": "talib-sync",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,7 @@
   ],
   "license": "ISC",
   "dependencies": {
-    "synchronize": "^2.0.0",
+    "deasync": "^0.1.9",
     "talib": "^1.0.2"
   },
   "devDependencies": {
