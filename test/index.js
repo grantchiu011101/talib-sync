@@ -1,4 +1,4 @@
-var talib = require('../index') ;
+var talib = require('../') ;
 var should = require('should') ;
 var _ = require( 'underscore') ;
 var Promise = require("bluebird");
@@ -11,20 +11,20 @@ describe('talib', function() {
 		(talib.version).should.be.instanceOf(String) ;
 	}) ;
 
-	describe ( 'functions', function() {
-		(talib.functions).should.be.instanceOf(Array).and.have.lengthOf(161) ;
-	}) ;
+	// describe ( 'functions', function() {
+	// 	(talib.functions).should.be.instanceOf(Array).and.have.lengthOf(161) ;
+	// }) ;
 
 
-	describe('explain', function() {
-		it('ADX', function() {
-			talib.explain("ADX")
-			.then(function(data) {
-				// console.log ( data) ;
-				data.should.have.keys('name', 'group', 'hint', 'inputs', 'outputs') ;
-			})
-		});
-	});
+	// describe('explain', function() {
+	// 	it('ADX', function() {
+	// 		talib.explain("ADX")
+	// 		.then(function(data) {
+	// 			// console.log ( data) ;
+	// 			data.should.have.keys('name', 'group', 'hint', 'inputs', 'outputs') ;
+	// 		}) ;
+	// 	});
+	// });
 
 	describe('exec', function() {
 		this.timeout(5000) ;
@@ -46,7 +46,7 @@ describe('talib', function() {
 		}) ;
 
 		it('ADX' , function() {
-
+			
 			var data = talib.execute({
 				name: "ADX",
 				startIdx: 0,
@@ -56,7 +56,7 @@ describe('talib', function() {
 				close: _.chain(marketData).map(function(data) {return data.Close ;}).value(),
 				optInTimePeriod: 9
 			}) ;
-			console.log ( data) ;
+			
 			(data).should.have.keys('result', 'begIndex', 'nbElement') ;
 			(data.result).should.have.property('outReal').with.length(data.nbElement) ;
 			
@@ -70,10 +70,10 @@ describe('talib', function() {
 				inReal: _.chain(marketData).map(function(data) {return data.Close ;}).value(),
 				optInTimePeriod: 9
 			}) ;
-			console.log ( data) ;
+			
 			(data).should.have.keys('result', 'begIndex', 'nbElement') ;
 			(data.result).should.have.property('outReal').with.length(data.nbElement) ;
-		})
+		}) ;
 	}) ;
 
 	
