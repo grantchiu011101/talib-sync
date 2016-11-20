@@ -1,0 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/grantchiu011101/talib-sync/badge.svg?branch=master)](https://coveralls.io/github/grantchiu011101/talib-sync?branch=master)
+
+
+
+sync wrapper for node-talib
