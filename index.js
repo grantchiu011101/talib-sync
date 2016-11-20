@@ -11,5 +11,6 @@ module.exports = {
 		require('deasync').loopWhile(function(){ return !done ; }) ;
 		return response ;
 	},
-	version: talib.version
+	version: talib.version,
+	functions: talib.functions
 }

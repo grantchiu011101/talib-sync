@@ -11,9 +11,9 @@ describe('talib', function() {
 		(talib.version).should.be.instanceOf(String) ;
 	}) ;
 
-	// describe ( 'functions', function() {
-	// 	(talib.functions).should.be.instanceOf(Array).and.have.lengthOf(161) ;
-	// }) ;
+	describe ( 'functions', function() {
+		(talib.functions).should.be.instanceOf(Array).and.have.lengthOf(161) ;
+	}) ;
 
 
 
