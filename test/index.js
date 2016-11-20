@@ -16,6 +16,7 @@ describe('talib', function() {
 	// }) ;
 
 
+
 	// describe('explain', function() {
 	// 	it('ADX', function() {
 	// 		talib.explain("ADX")
@@ -27,7 +28,7 @@ describe('talib', function() {
 	// });
 
 	describe('exec', function() {
-		this.timeout(5000) ;
+		this.timeout(50000) ;
 		var marketData ;
 
 		beforeEach ( function(done) {
@@ -46,7 +47,7 @@ describe('talib', function() {
 		}) ;
 
 		it('ADX' , function() {
-			
+
 			var data = talib.execute({
 				name: "ADX",
 				startIdx: 0,
@@ -56,7 +57,7 @@ describe('talib', function() {
 				close: _.chain(marketData).map(function(data) {return data.Close ;}).value(),
 				optInTimePeriod: 9
 			}) ;
-			
+
 			(data).should.have.keys('result', 'begIndex', 'nbElement') ;
 			(data.result).should.have.property('outReal').with.length(data.nbElement) ;
 			
@@ -74,9 +75,8 @@ describe('talib', function() {
 			(data).should.have.keys('result', 'begIndex', 'nbElement') ;
 			(data.result).should.have.property('outReal').with.length(data.nbElement) ;
 		}) ;
+
 	}) ;
 
 	
-});
-
-
+}) ;
